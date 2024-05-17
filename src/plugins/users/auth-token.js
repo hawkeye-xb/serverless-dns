@@ -62,12 +62,14 @@ export async function auth(rxid, url) {
 
   // empty access key, allow all
   if (util.emptySet(accesskeys)) {
+    log.i(rxid, "auth: no access keys configured, allowing all requests");
     return Outcome.none();
   }
   const msg = rdnsutil.msgkeyFromUrl(url);
   // if missing msg-key in url, deny
   if (util.emptyString(msg)) {
     log.w(rxid, "auth: stop! missing access-key in", url);
+    log.w(rxid, "auth: denied due to missing access-key in URL", url);
     return Outcome.miss();
   }
 
@@ -86,6 +88,7 @@ export async function auth(rxid, url) {
     for (const ak of accesskeys) {
       ok = hexcat.startsWith(ak);
       if (ok) {
+        log.i(rxid, "auth: access granted for", dom);
         return Outcome.pass();
       } else {
         const [d, h] = ak.split(akdelim);
