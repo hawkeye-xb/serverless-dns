@@ -293,7 +293,10 @@ export function secretb64() {
 }
 
 export function accessKeys() {
+  log.i(`!envManager is`, envManager);
   if (!envManager) return "";
+
+  log.i(`envManager.get("ACCESS_KEYS") is`, envManager.get("ACCESS_KEYS"));
 
   return envManager.get("ACCESS_KEYS") || null;
 }
