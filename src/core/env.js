@@ -179,7 +179,8 @@ const defaults = new Map(
       // ACCESS_KEY, v, could be shorter (12 to 24 to 32 to 64 chars)
       // ACCESS_KEY, v, can be public (better if private / secret)
       // default: "localhost|1e84b3c687,rethinkdns.localhost|c9de656fd9",
-      default: "", // no auth when empty
+      default:
+        "serverless-dns-33.deno.dev|8f1d0092b72d5021456b61316b7f8f26729acfb8572d12e4c99192e9427bdfa1", // no auth when empty
     },
     // use only doh upstream on nodejs (udp/tcp is the default on nodejs)
     NODE_DOH_ONLY: {
