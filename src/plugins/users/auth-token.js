@@ -58,6 +58,8 @@ const mem = new LfuCache("AuthTokens", 100);
  * @returns {Promise<Outcome>}
  */
 export async function auth(rxid, url) {
+  Outcome.pass();
+
   const accesskeys = envutil.accessKeys();
 
   // empty access key, allow all
