@@ -58,8 +58,6 @@ const mem = new LfuCache("AuthTokens", 100);
  * @returns {Promise<Outcome>}
  */
 export async function auth(rxid, url) {
-  Outcome.pass();
-
   const accesskeys = envutil.accessKeys();
 
   // empty access key, allow all
@@ -70,7 +68,6 @@ export async function auth(rxid, url) {
   const msg = rdnsutil.msgkeyFromUrl(url);
   // if missing msg-key in url, deny
   if (util.emptyString(msg)) {
-    log.w(rxid, "auth: stop! missing access-key in", url);
     log.w(rxid, "auth: denied due to missing access-key in URL", url);
     return Outcome.miss();
   }
