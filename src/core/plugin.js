@@ -154,7 +154,7 @@ export default class RethinkPlugin {
         continue;
       }
 
-      this.log.i("执行插件的callback, p is:", p, ". __ctx is: ", this.ctx);
+      this.log.i("执行插件的callback, p is: --", ". __ctx is: ", this.ctx);
       this.log.lapTime(t, rxid, p.name, "send-io");
 
       const res = await p.module.exec(makectx(this.ctx, p.pctx));
